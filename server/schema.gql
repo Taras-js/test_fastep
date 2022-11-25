@@ -1,0 +1,111 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserType {
+  id: Float
+  first_name: String
+  last_name: String
+  phone: String
+  username: String
+  role: String
+  first_order: Boolean
+  is_vip: Boolean
+  points: Float
+  created: DateTime
+  updated: DateTime
+  referral_code: String
+  orders: [Float!]
+  tokens: [Float!]
+  token: Float
+  profiles: [Float]!
+  inventory: String
+  route: String
+  last_profile: Float
+  profile_confirmed: Boolean
+  phones: [String]!
+  addresses: [String!]
+  limited: DateTime
+  five_weeks_limited: DateTime
+  six_weeks_limited: DateTime
+  seven_weeks_limited: DateTime
+  new_profile: Boolean
+  use_safari: Boolean
+  is_token_right: Boolean
+  is_token_reverse: Boolean
+  is_token_invalid: Boolean
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  getUser(phone: String!): UserType
+  getUsers: [UserType]!
+}
+
+type Mutation {
+  createUser(input: createUserInput!): UserType!
+  updateUser(input: updateUserInput!): UserType!
+  deleteUser(input: deleteUserInput!): UserType!
+}
+
+input createUserInput {
+  id: Float
+  first_name: String
+  last_name: String
+  phone: String
+  username: String
+  role: String
+  first_order: Boolean
+  is_vip: Boolean
+  points: Float
+  created: DateTime
+  updated: DateTime
+  referral_code: String
+  orders: [Float]!
+  tokens: [Float]!
+  token: Float
+  profiles: [Float]!
+  inventory: String
+  route: String
+  last_profile: Float
+  profile_confirmed: Boolean
+  phones: [String]!
+  addresses: [String]!
+  limited: DateTime
+  new_profile: Boolean!
+}
+
+input updateUserInput {
+  id: Float
+  first_name: String
+  last_name: String
+  phone: String
+  username: String
+  role: String
+  first_order: Boolean
+  is_vip: Boolean
+  points: Float
+  created: DateTime
+  updated: DateTime
+  referral_code: String
+  orders: [Float]!
+  tokens: [Float]!
+  token: Float
+  profiles: [Float]!
+  inventory: String
+  route: String
+  last_profile: Float
+  profile_confirmed: Boolean
+  phones: [String]!
+  addresses: [String]!
+  limited: DateTime
+  new_profile: Boolean!
+}
+
+input deleteUserInput {
+  id: Float!
+}
