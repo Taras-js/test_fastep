@@ -33,8 +33,8 @@ export class UsersResolver {
     }
 
     @Mutation(() => UserType)
-    async deleteUser(@Args('input') deleteUserData: deleteUserInput): Promise<UserType> {
-        return this.usersService.deleteUser(deleteUserData)
+    async removeUser(@Args('input') deleteUserData: deleteUserInput): Promise<UserType> {
+        return this.usersService.removeUser(deleteUserData.id)
     }
 
 

@@ -33,14 +33,20 @@ export class UsersService {
 
     async getUsers(): Promise<UsersWebDocument[]> {
         const users = await this.usersModel.find({}).exec();
-        console.log('users:', users)
-        return users
+        const update = users.map(i => {
+            if(i.id !== undefined){
+                return i
+            }
+        })
+        // console.log('users:', users)
+        return update
 
     }
 
-    async deleteUser(deleteUserData: deleteUserInput): Promise<UsersWebDocument> {
-        return this.usersModel.findOneAndRemove(deleteUserData)
-
+    async removeUser(id): Promise<UsersWebDocument> {
+        await this.usersModel.deleteOne({id}).exec()
+        console.log(`user ${id} removed`)
+        return id
     }
 
 
