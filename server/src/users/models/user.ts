@@ -63,7 +63,7 @@ export class UserType {
     @Field({ nullable: true })
     public profile_confirmed?: boolean;
 
-    @Field( () => [String], { nullable: 'items' } )
+    @Field( () => [String], { nullable: true } )
     public phones?: string[];
 
     @Field( () => [String], { nullable: true } )

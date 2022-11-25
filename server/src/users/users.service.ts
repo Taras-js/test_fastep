@@ -32,7 +32,9 @@ export class UsersService {
 
 
     async getUsers(): Promise<UsersWebDocument[]> {
-        return await this.usersModel.find({}).exec();
+        const users = await this.usersModel.find({}).exec();
+        console.log('users:', users)
+        return users
 
     }
 
