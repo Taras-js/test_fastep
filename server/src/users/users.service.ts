@@ -1,9 +1,6 @@
 import {Injectable} from "@nestjs/common";
-import {createUserInput} from "./dto/input/create-user.input";
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
-import {updateUserInput} from "./dto/input/update-user.input";
-import {deleteUserInput} from "./dto/input/delete-user.input";
 import {UsersWeb, UsersWebDocument} from "./schemas/users.schemas";
 
 @Injectable()
@@ -13,15 +10,31 @@ export class UsersService {
     ) {
     }
 
-    async createUser(createUserData: createUserInput): Promise<UsersWebDocument> {
-        const createdUser = new this.usersModel(createUserData);
+    async createUser(data): Promise<UsersWebDocument> {
+        let id = 0;
+        do {
+            id = Math.floor(1000 + Math.random() * 9000);
+        } while (await this.usersModel.findOne({id}).exec());
+        const createdUser = new this.usersModel({
+            id,
+            phone: data.phone,
+            first_name: data.first_name,
+            role: data.role
+        });
+        console.log(createdUser)
         return await createdUser.save();
 
     }
 
-
-    async updateUser(id, updateUserData: updateUserInput): Promise<UsersWebDocument> {
-        return this.usersModel.findOneAndUpdate(id, updateUserData, {new: true})
+    async updateUser(data): Promise<UsersWebDocument> {
+        await this.usersModel.updateOne({id: data.id}, {
+            $set: {
+                first_name: data.first_name,
+                phone: data.phone,
+                role: data.role
+            }
+        }).exec()
+        return await this.usersModel.findOne({id: data.id}).exec()
     }
 
     async getUser(input): Promise<UsersWebDocument> {
@@ -30,17 +43,14 @@ export class UsersService {
 
     }
 
-
     async getUsers(): Promise<UsersWebDocument[]> {
-        const users = await this.usersModel.find({}).exec();
-        const update = users.map(i => {
-            if(i.id !== undefined){
+        const users = await this.usersModel.find({}).limit(20).exec();
+        console.log('users length:', users.length)
+        return users.map(i => {
+            if (i.id !== undefined) {
                 return i
             }
         })
-        // console.log('users:', users)
-        return update
-
     }
 
     async removeUser(id): Promise<UsersWebDocument> {
@@ -48,6 +58,4 @@ export class UsersService {
         console.log(`user ${id} removed`)
         return id
     }
-
-
 }

@@ -53,57 +53,16 @@ type Mutation {
 }
 
 input createUserInput {
-  id: Float
   first_name: String
-  last_name: String
   phone: String
-  username: String
   role: String
-  first_order: Boolean
-  is_vip: Boolean
-  points: Float
-  created: DateTime
-  updated: DateTime
-  referral_code: String
-  orders: [Float]!
-  tokens: [Float]!
-  token: Float
-  profiles: [Float]!
-  inventory: String
-  route: String
-  last_profile: Float
-  profile_confirmed: Boolean
-  phones: [String]!
-  addresses: [String]!
-  limited: DateTime
-  new_profile: Boolean!
 }
 
 input updateUserInput {
   id: Float
   first_name: String
-  last_name: String
   phone: String
-  username: String
   role: String
-  first_order: Boolean
-  is_vip: Boolean
-  points: Float
-  created: DateTime
-  updated: DateTime
-  referral_code: String
-  orders: [Float]!
-  tokens: [Float]!
-  token: Float
-  profiles: [Float]!
-  inventory: String
-  route: String
-  last_profile: Float
-  profile_confirmed: Boolean
-  phones: [String]!
-  addresses: [String]!
-  limited: DateTime
-  new_profile: Boolean!
 }
 
 input deleteUserInput {

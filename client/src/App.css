@@ -44,3 +44,16 @@
   margin-bottom: 10px;
 
 }
+
+.wrapper__input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}

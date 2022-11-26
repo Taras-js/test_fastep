@@ -10,7 +10,8 @@ import {deleteUserInput} from "./dto/input/delete-user.input";
 export class UsersResolver {
     constructor(
         private readonly usersService: UsersService,
-    ) {}
+    ) {
+    }
 
     @Query(() => UserType, {name: 'getUser', nullable: true})
     async getUser(@Args() getUserArgs: GetUserArgs): Promise<UserType> {
@@ -29,7 +30,7 @@ export class UsersResolver {
 
     @Mutation(() => UserType)
     async updateUser(@Args('input') updateUserData: updateUserInput): Promise<UserType> {
-        return this.usersService.updateUser(updateUserData.id, updateUserData)
+        return this.usersService.updateUser(updateUserData)
     }
 
     @Mutation(() => UserType)

@@ -101,3 +101,19 @@ export const Header = styled.div`
     }
   }
 `
+
+export const Input = styled.input`
+  background: #F7F7F7;
+  border: 2px solid rgba(217, 217, 217, 0.3);
+  box-sizing: border-box;
+  border-radius: 12px;
+  width: 70%;
+  height: 50px;
+  font-size: 20px;
+  line-height: 120%;
+  color: #616A5C;
+  padding: 18px;
+  text-align: center;
+  opacity: 0.8;
+  outline: none;
+`
