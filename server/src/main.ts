@@ -1,7 +1,6 @@
 import {NestFactory} from '@nestjs/core';
 import {AppModule} from './app.module';
 import {ConfigService} from "@nestjs/config";
-const cors = require('cors')
 async function start() {
     const app = await NestFactory.create(AppModule);
     const config = await app.get(ConfigService)
@@ -11,7 +10,7 @@ async function start() {
         console.log('Unhandled Rejection at:', promise, 'reason:', reason);
     });
 
-    app.use(cors());
+    app.enableCors();
     await app.listen(port || 3002, () => {
         console.log(`🚀 Server ready at ${API_host}${port}/api/graphql`)
     });
