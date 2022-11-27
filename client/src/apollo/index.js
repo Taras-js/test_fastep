@@ -2,7 +2,7 @@ import {ApolloClient, InMemoryCache, createHttpLink} from '@apollo/client'
 
 const apiUrl = 'localhost:8081'
 const httpLink = createHttpLink({
-    uri: `https://${apiUrl}/api/graphql`,
+    uri: `http://${apiUrl}/api/graphql`,
 
 });
 
