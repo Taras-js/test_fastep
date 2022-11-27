@@ -1,8 +1,6 @@
-import {ApolloClient, InMemoryCache, createHttpLink, } from '@apollo/client'
+import {ApolloClient, InMemoryCache, createHttpLink} from '@apollo/client'
 
-const apiUrl = 'taras-server.ru'
-// const apiUrl =  process.env.NODE_ENV === 'production' ? process.env.REACT_APP_SERVER_PROD : process.env.REACT_APP_SERVER_DEV;
-
+const apiUrl = 'localhost:8081'
 const httpLink = createHttpLink({
     uri: `https://${apiUrl}/api/graphql`,
 
