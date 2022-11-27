@@ -5,12 +5,16 @@ import {GraphQLModule} from "@nestjs/graphql";
 import {ApolloDriver} from "@nestjs/apollo";
 import "dotenv/config";
 import {UsersModule} from "./users/users.module";
-
+import { ServeStaticModule } from "@nestjs/serve-static";
+import {join} from "path";
 const mongoUri = process.env.MONGODB_URI
 console.log('Connect database:', mongoUri)
 
 @Module({
     imports: [
+        ServeStaticModule.forRoot({
+            rootPath: join(__dirname, "..","build")
+        }),
         GraphQLModule.forRoot({
             autoSchemaFile: 'schema.gql',
             driver: ApolloDriver,
